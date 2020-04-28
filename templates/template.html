@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Resume Parser</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+   </head>
+   <body>
+	<div class="container" >  
+	<form id="contact" action="" method="post" enctype="multipart/form-data">
+		<h3>Welcome to Online Resume Parser</h3>
+		<ol>
+			<h4><li> Please upload your resume in PDF or DOCX format. </h4></li>
+			<h4><li> Excel file with the extracted data will be downloaded.</h4></li>
+		</ol>
+		<fieldset>
+		  <input type="file" name="file" tabindex="1" required autofocus/>  
+		</fieldset>
+		<fieldset>
+		  <button name="submit" type="submit" id="contact-submit">UPLOAD</button>
+		</fieldset>
+	</form>
+	</div>
+    </body>
+</html>
+
