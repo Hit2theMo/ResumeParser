@@ -1,16 +1,16 @@
-import re
-import nltk
-from docx import Document
 import os
-import textract
-import pandas as pd
-from PyPDF2 import PdfFileReader
-import PyPDF2
+import re
 
-import time
+# import PyPDF2
+from docx import Document
+# from PyPDF2 import PdfFileReader
 
-nltk.download('punkt', quiet=True)
-nltk.download('averaged_perceptron_tagger', quiet=True)
+# import nltk
+# import pandas as pd
+# import textract
+
+# nltk.download('punkt', quiet=True)
+# nltk.download('averaged_perceptron_tagger', quiet=True)
 ######################################################################
 # USE THIS FUNCTION ONLY IF  file_To_Text() DOESNT WORK FOR PDF FILES
 
@@ -30,7 +30,7 @@ def file_To_Text(path):
     text = textract.process(path)
     return text.decode("utf-8")
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract the font names from PDF files
 
 
@@ -70,7 +70,7 @@ def extract_font_pdf(fname):
         font[i] = font[i].lstrip("/")
     return font
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract the font name, font size, number of tables, images from a docx file
 
 
@@ -90,7 +90,7 @@ def extract_font_table_imgs_docx(path):
     img_count = len(doc.inline_shapes)
     return font, table_count, img_count
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract email ids from both PDF and DOCX files
 
 
@@ -100,7 +100,7 @@ def extract_emails(txt):
     if emails == []:
         emails.append(None)
     return emails
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract mobile numbers from both PDF and DOCX files
 
 
@@ -114,7 +114,7 @@ def extract_mobile_number(text):
         else:
             return number
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract the LinkedIn URL of user from both PDF and DOCX files
 
 
@@ -126,7 +126,7 @@ def extract_Linkedin(txt):
     else:
         return url.group()
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Function to extract the "INDIAN NAMES" from both PDF and DOCX files
 
 
@@ -180,7 +180,7 @@ def extract_name(document):
         otherNameHits = nameHits[1:]
     return name, otherNameHits
 
-#----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------
 # Master function which combines all above methods to return a data frame
 
 
@@ -221,7 +221,6 @@ def extract_info(path):
             }]
     df = pd.DataFrame(data)
     return df
-#----------------------------------------------------------------------------------------------------
-
-
+# ----------------------------------------------------------------------------------------------------
 print("hello")
+print(extract_font_table_imgs_docx("EY_Kitman Tsang_Cosec Mgr.docx"))

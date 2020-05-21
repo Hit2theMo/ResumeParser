@@ -4,11 +4,13 @@ Created on Thu Apr  7 23:31:09 2020
 @author: Mohit
 """
 import os
-from flask import Flask, flash, request, redirect, url_for, render_template, send_from_directory
-from werkzeug.utils import secure_filename
-from cv_parser import extract_info
-import pandas as pd
 import sqlite3
+
+import pandas as pd
+from cv_parser import extract_info
+from flask import (Flask, flash, redirect, render_template, request,
+                   send_from_directory, url_for)
+from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './Uploaded_Files'  # PATH TO STORE THE UPLOADED RESUMES
 DOWNLOAD_FOLDER = './Output_Files'  # PATH TO STORE THE OUTPUT EXCEL FILES
@@ -73,10 +75,11 @@ def database(name, data):
     cursor.execute(
         """CREATE TABLE IF NOT EXISTS resume_files (name TEXT,data BLOB) """)
     cursor.execute(
-        """INSERT INTO resume_files (name, data) VALUES (?,?) """, (name, data))
+        """INSERT INTO resume_files (name, data) VALUES(?,?) """, (name, data))
     conn.commit()
     cursor.close()
     conn.close()
+
 
 
 if __name__ == "__main__":
