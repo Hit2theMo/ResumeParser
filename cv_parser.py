@@ -221,6 +221,8 @@ def extract_info(path):
             }]
     df = pd.DataFrame(data)
     return df
+
+
 # ----------------------------------------------------------------------------------------------------
 print("hello")
 print(extract_font_table_imgs_docx("EY_Kitman Tsang_Cosec Mgr.docx"))
